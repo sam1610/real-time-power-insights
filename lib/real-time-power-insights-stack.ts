@@ -1,7 +1,6 @@
 import * as cdk from '@aws-cdk/core';
 import {IotToLambdaToDynamoDB, IotToLambdaToDynamoDBProps } from  '@aws-solutions-constructs/aws-iot-lambda-dynamodb';
 import * as lambda  from "@aws-cdk/aws-lambda";
-import { LambdaToDynamoDB} from "@aws-solutions-constructs/aws-lambda-dynamodb";
 
 import * as path from 'path';
 
@@ -25,14 +24,7 @@ export class RealTimePowerInsightsStack extends cdk.Stack {
         }
       }
     })
-    const insightsFunction= new LambdaToDynamoDB( this, 'insights-function', {
-      lambdaFunctionProps:{
-        code:lambda.Code.fromAsset(path.join(__dirname, 'lambda/insights')),
-        runtime: lambda.Runtime.NODEJS_12_X, 
-        handler: 'index.handler'
-      }, 
-      existingTableObj: iotLambdaDdb.dynamoTable
-    })
+
 
 
 
