@@ -4,8 +4,6 @@ import * as lambda  from "@aws-cdk/aws-lambda";
 import { LambdaToDynamoDB} from "@aws-solutions-constructs/aws-lambda-dynamodb";
 import { EventsRuleToLambda}  from "@aws-solutions-constructs/aws-events-rule-lambda";
 import * as events from "@aws-cdk/aws-events";
-import { inflate } from 'zlib';
-import {LambdaToSns } from "@aws-solutions-constructs/aws-lambda-sns";
 import * as path from 'path';
 
 export class RealTimePowerInsightsStack extends cdk.Stack {
@@ -45,9 +43,7 @@ export class RealTimePowerInsightsStack extends cdk.Stack {
 
 
     })
-    new LambdaToSns( this, "insights-notification-service", {
-      existingLambdaObj: insightsFunction.lambdaFunction
-    })
+
 
   }
 }
