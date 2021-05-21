@@ -2,8 +2,7 @@ import * as cdk from '@aws-cdk/core';
 import {IotToLambdaToDynamoDB, IotToLambdaToDynamoDBProps } from  '@aws-solutions-constructs/aws-iot-lambda-dynamodb';
 import * as lambda  from "@aws-cdk/aws-lambda";
 import { LambdaToDynamoDB} from "@aws-solutions-constructs/aws-lambda-dynamodb";
-import { EventsRuleToLambda}  from "@aws-solutions-constructs/aws-events-rule-lambda";
-import * as events from "@aws-cdk/aws-events";
+
 import * as path from 'path';
 
 export class RealTimePowerInsightsStack extends cdk.Stack {
@@ -35,14 +34,7 @@ export class RealTimePowerInsightsStack extends cdk.Stack {
       existingTableObj: iotLambdaDdb.dynamoTable
     })
 
-    new EventsRuleToLambda( this, "insights-function-scheduler", {
-      existingLambdaObj: insightsFunction.lambdaFunction, 
-      eventRuleProps: {
-        schedule :events.Schedule.expression('rate(5 minutes')
-      }
 
-
-    })
 
 
   }
