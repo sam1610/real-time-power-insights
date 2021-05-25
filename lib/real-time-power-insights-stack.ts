@@ -49,4 +49,6 @@ export class RealTimePowerInsightsStack extends cdk.Stack {
 
 
   // # commentaire  pour le test. 
+  //  naother comment .,
+  
 }
